@@ -6,11 +6,10 @@ import java.util.*;
  * ============================================================
  *
  * Description:
- * Demonstrates maintaining insertion order with uniqueness
- * using LinkedHashSet.
+ * Demonstrates mapping bogies to their capacities using HashMap.
  *
  * @author Developer
- * @version 5.0
+ * @version 6.0
  */
 public class TrainConsistManagementApp {
 
@@ -18,20 +17,20 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create LinkedHashSet for train formation
-        Set<String> formation = new LinkedHashSet<>();
+        // Create HashMap for bogie → capacity
+        Map<String, Integer> bogieCapacity = new HashMap<>();
 
-        // ADD bogies
-        formation.add("Engine");
-        formation.add("Sleeper");
-        formation.add("Cargo");
-        formation.add("Guard");
+        // ADD mappings
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 54);
+        bogieCapacity.put("First Class", 24);
 
-        // ADD duplicate intentionally
-        formation.add("Sleeper"); // ignored
+        // DISPLAY mapping
+        System.out.println("Bogie Capacity Details:\n");
 
-        // DISPLAY formation
-        System.out.println("Train Formation:");
-        System.out.println(formation);
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey()
+                    + " | Capacity: " + entry.getValue());
+        }
     }
 }
