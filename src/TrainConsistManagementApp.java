@@ -6,10 +6,11 @@ import java.util.*;
  * ============================================================
  *
  * Description:
- * Demonstrates ordered train consist using LinkedList.
+ * Demonstrates maintaining insertion order with uniqueness
+ * using LinkedHashSet.
  *
  * @author Developer
- * @version 4.0
+ * @version 5.0
  */
 public class TrainConsistManagementApp {
 
@@ -17,30 +18,20 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create LinkedList for train consist
-        LinkedList<String> consist = new LinkedList<>();
+        // Create LinkedHashSet for train formation
+        Set<String> formation = new LinkedHashSet<>();
 
         // ADD bogies
-        consist.add("Engine");
-        consist.add("Sleeper");
-        consist.add("AC");
-        consist.add("Cargo");
-        consist.add("Guard");
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
 
-        System.out.println("Initial Train Consist:");
-        System.out.println(consist);
+        // ADD duplicate intentionally
+        formation.add("Sleeper"); // ignored
 
-        // INSERT Pantry at position 2
-        consist.add(2, "Pantry");
-
-        System.out.println("\nAfter adding Pantry at position 2:");
-        System.out.println(consist);
-
-        // REMOVE first and last bogie
-        consist.removeFirst();
-        consist.removeLast();
-
-        System.out.println("\nAfter removing first and last bogie:");
-        System.out.println(consist);
+        // DISPLAY formation
+        System.out.println("Train Formation:");
+        System.out.println(formation);
     }
 }
