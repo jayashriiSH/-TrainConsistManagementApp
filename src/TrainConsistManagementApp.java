@@ -1,5 +1,18 @@
 import java.util.*;
 
+<<<<<<< HEAD
+/**
+ * ============================================================
+ * MAIN CLASS - TrainConsistManagementApp
+ * ============================================================
+ *
+ * Description:
+ * Demonstrates Binary Search for bogie ID.
+ *
+ * @version 19.0
+ */
+=======
+>>>>>>> feature/UC19
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
@@ -7,10 +20,18 @@ public class TrainConsistManagementApp {
         System.out.println("UC19 - Binary Search for Bogie ID");
         System.out.println("====================================================\n");
 
+<<<<<<< HEAD
+        // Unsorted array (will be sorted first)
+=======
+>>>>>>> feature/UC19
         String[] bogieIds = {"BG309", "BG101", "BG550", "BG205", "BG412"};
 
         String searchKey = "BG205";
 
+<<<<<<< HEAD
+        // SORT first (important precondition)
+=======
+>>>>>>> feature/UC19
         Arrays.sort(bogieIds);
 
         System.out.println("Sorted Bogie IDs:");
@@ -29,6 +50,10 @@ public class TrainConsistManagementApp {
         System.out.println("\nUC19 search completed...");
     }
 
+<<<<<<< HEAD
+    // BINARY SEARCH METHOD
+=======
+>>>>>>> feature/UC19
     public static boolean binarySearch(String[] arr, String key) {
 
         int low = 0;
@@ -41,6 +66,17 @@ public class TrainConsistManagementApp {
             int cmp = arr[mid].compareTo(key);
 
             if (cmp == 0) {
+<<<<<<< HEAD
+                return true; // found
+            } else if (cmp < 0) {
+                low = mid + 1; // search right
+            } else {
+                high = mid - 1; // search left
+            }
+        }
+
+        return false; // not found
+=======
                 return true;
             } else if (cmp < 0) {
                 low = mid + 1;
@@ -50,5 +86,6 @@ public class TrainConsistManagementApp {
         }
 
         return false;
+>>>>>>> feature/UC19
     }
 }
