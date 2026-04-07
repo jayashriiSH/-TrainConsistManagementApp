@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
  * ============================================================
  *
  * Description:
- * Demonstrates filtering bogies using Java Stream API.
+ * Demonstrates grouping bogies by type using Stream API.
  *
  * @author Developer
- * @version 8.0
+ * @version 9.0
  */
 public class TrainConsistManagementApp {
 
@@ -18,24 +18,27 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create bogie list (same as UC7)
+        // Create bogie list
         List<Bogie> bogies = new ArrayList<>();
 
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("Sleeper", 72));   // duplicate type
         bogies.add(new Bogie("First Class", 24));
 
-        // FILTER bogies with capacity > 60
-        List<Bogie> filtered = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .collect(Collectors.toList());
+        // GROUP by bogie type
+        Map<String, List<Bogie>> grouped = bogies.stream()
+                .collect(Collectors.groupingBy(b -> b.name));
 
-        // DISPLAY filtered bogies
-        System.out.println("High Capacity Bogies (> 60):\n");
+        // DISPLAY grouped data
+        System.out.println("Grouped Bogies:\n");
 
-        for (Bogie b : filtered) {
-            System.out.println("Bogie: " + b.name +
-                    " | Capacity: " + b.capacity);
+        for (String type : grouped.keySet()) {
+            System.out.println(type + ":");
+
+            for (Bogie b : grouped.get(type)) {
+                System.out.println("  Capacity: " + b.capacity);
+            }
         }
     }
 }
