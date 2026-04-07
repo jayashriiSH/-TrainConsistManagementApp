@@ -1,5 +1,5 @@
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 /**
  * ============================================================
@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
  * ============================================================
  *
  * Description:
- * Demonstrates grouping bogies by type using Stream API.
+ * Demonstrates calculating total seating capacity using Stream reduce().
  *
  * @author Developer
- * @version 9.0
+ * @version 10.0
  */
 public class TrainConsistManagementApp {
 
@@ -23,23 +23,15 @@ public class TrainConsistManagementApp {
 
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
-        bogies.add(new Bogie("Sleeper", 72));   // duplicate type
         bogies.add(new Bogie("First Class", 24));
 
-        // GROUP by bogie type
-        Map<String, List<Bogie>> grouped = bogies.stream()
-                .collect(Collectors.groupingBy(b -> b.name));
+        // CALCULATE total capacity
+        int totalCapacity = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
 
-        // DISPLAY grouped data
-        System.out.println("Grouped Bogies:\n");
-
-        for (String type : grouped.keySet()) {
-            System.out.println(type + ":");
-
-            for (Bogie b : grouped.get(type)) {
-                System.out.println("  Capacity: " + b.capacity);
-            }
-        }
+        // DISPLAY result
+        System.out.println("Total Seating Capacity: " + totalCapacity);
     }
 }
 
