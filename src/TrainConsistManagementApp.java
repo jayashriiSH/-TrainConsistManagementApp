@@ -6,10 +6,10 @@ import java.util.*;
  * ============================================================
  *
  * Description:
- * Demonstrates unique bogie ID tracking using HashSet.
+ * Demonstrates ordered train consist using LinkedList.
  *
  * @author Developer
- * @version 3.0
+ * @version 4.0
  */
 public class TrainConsistManagementApp {
 
@@ -17,18 +17,30 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create HashSet for bogie IDs
-        Set<String> bogieIds = new HashSet<>();
+        // Create LinkedList for train consist
+        LinkedList<String> consist = new LinkedList<>();
 
-        // ADD bogie IDs (with duplicates)
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG103");
-        bogieIds.add("BG101"); // duplicate
-        bogieIds.add("BG102"); // duplicate
+        // ADD bogies
+        consist.add("Engine");
+        consist.add("Sleeper");
+        consist.add("AC");
+        consist.add("Cargo");
+        consist.add("Guard");
 
-        // DISPLAY unique bogies
-        System.out.println("Unique Bogie IDs:");
-        System.out.println(bogieIds);
+        System.out.println("Initial Train Consist:");
+        System.out.println(consist);
+
+        // INSERT Pantry at position 2
+        consist.add(2, "Pantry");
+
+        System.out.println("\nAfter adding Pantry at position 2:");
+        System.out.println(consist);
+
+        // REMOVE first and last bogie
+        consist.removeFirst();
+        consist.removeLast();
+
+        System.out.println("\nAfter removing first and last bogie:");
+        System.out.println(consist);
     }
 }
