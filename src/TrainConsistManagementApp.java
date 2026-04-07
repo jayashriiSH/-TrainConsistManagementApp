@@ -6,10 +6,10 @@ import java.util.*;
  * ============================================================
  *
  * Description:
- * Demonstrates ordered train consist using LinkedList.
+ * Demonstrates mapping bogies to their capacities using HashMap.
  *
  * @author Developer
- * @version 4.0
+ * @version 6.0
  */
 public class TrainConsistManagementApp {
 
@@ -17,30 +17,20 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create LinkedList for train consist
-        LinkedList<String> consist = new LinkedList<>();
+        // Create HashMap for bogie → capacity
+        Map<String, Integer> bogieCapacity = new HashMap<>();
 
-        // ADD bogies
-        consist.add("Engine");
-        consist.add("Sleeper");
-        consist.add("AC");
-        consist.add("Cargo");
-        consist.add("Guard");
+        // ADD mappings
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 54);
+        bogieCapacity.put("First Class", 24);
 
-        System.out.println("Initial Train Consist:");
-        System.out.println(consist);
+        // DISPLAY mapping
+        System.out.println("Bogie Capacity Details:\n");
 
-        // INSERT Pantry at position 2
-        consist.add(2, "Pantry");
-
-        System.out.println("\nAfter adding Pantry at position 2:");
-        System.out.println(consist);
-
-        // REMOVE first and last bogie
-        consist.removeFirst();
-        consist.removeLast();
-
-        System.out.println("\nAfter removing first and last bogie:");
-        System.out.println(consist);
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey()
+                    + " | Capacity: " + entry.getValue());
+        }
     }
 }
