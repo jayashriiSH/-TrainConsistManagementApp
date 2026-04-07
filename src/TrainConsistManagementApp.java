@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * ============================================================
@@ -6,10 +7,10 @@ import java.util.*;
  * ============================================================
  *
  * Description:
- * Demonstrates sorting bogies based on capacity using Comparator.
+ * Demonstrates filtering bogies using Java Stream API.
  *
  * @author Developer
- * @version 7.0
+ * @version 8.0
  */
 public class TrainConsistManagementApp {
 
@@ -17,21 +18,22 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create list of bogies
+        // Create bogie list (same as UC7)
         List<Bogie> bogies = new ArrayList<>();
 
-        // ADD bogie objects
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
         bogies.add(new Bogie("First Class", 24));
 
-        // SORT using Comparator (ascending)
-        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+        // FILTER bogies with capacity > 60
+        List<Bogie> filtered = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
 
-        // DISPLAY sorted bogies
-        System.out.println("Bogies sorted by capacity:\n");
+        // DISPLAY filtered bogies
+        System.out.println("High Capacity Bogies (> 60):\n");
 
-        for (Bogie b : bogies) {
+        for (Bogie b : filtered) {
             System.out.println("Bogie: " + b.name +
                     " | Capacity: " + b.capacity);
         }
