@@ -1,28 +1,52 @@
+import java.util.*;
+
 /**
  * ============================================================
- * MAIN CLASS - TrainConsistApp
+ * MAIN CLASS - TrainConsistManagementApp
  * ============================================================
  *
  * Description:
- * Entry point of the Train Consist Management System.
- * Initializes train consist and displays initial state.
+ * Demonstrates adding, removing, and checking passenger bogies
+ * using ArrayList operations.
  *
  * @author Developer
- * @version 1.0
+ * @version 2.0
  */
-import java.util.*;
-
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Initialize empty consist (dynamic list)
-        List<String> consist = new ArrayList<>();
+        // Create ArrayList for passenger bogies
+        List<String> passengerBogies = new ArrayList<>();
 
-        // Display initial state
-        System.out.println("Train initialized successfully.");
-        System.out.println("Current number of bogies: " + consist.size());
+        // ADD bogies
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        // DISPLAY after insertion
+        System.out.println("Passenger Bogies after addition:");
+        System.out.println(passengerBogies);
+
+        // REMOVE one bogie
+        passengerBogies.remove("AC Chair");
+
+        // DISPLAY after removal
+        System.out.println("\nAfter removing AC Chair:");
+        System.out.println(passengerBogies);
+
+        // CHECK existence
+        System.out.println("\nChecking if Sleeper exists:");
+        if (passengerBogies.contains("Sleeper")) {
+            System.out.println("Sleeper bogie is present.");
+        } else {
+            System.out.println("Sleeper bogie is NOT present.");
+        }
+
+        // FINAL STATE
+        System.out.println("\nFinal Bogie List:");
+        System.out.println(passengerBogies);
     }
 }
