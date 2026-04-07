@@ -1,5 +1,4 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.regex.*;
 
 /**
  * ============================================================
@@ -7,10 +6,10 @@ import java.util.stream.*;
  * ============================================================
  *
  * Description:
- * Demonstrates calculating total seating capacity using Stream reduce().
+ * Demonstrates validation of Train ID and Cargo Code using Regex.
  *
  * @author Developer
- * @version 10.0
+ * @version 11.0
  */
 public class TrainConsistManagementApp {
 
@@ -18,33 +17,28 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===\n");
 
-        // Create bogie list
-        List<Bogie> bogies = new ArrayList<>();
+        String trainId = "TRN-1234";
+        String cargoCode = "PET-AB";
 
-        bogies.add(new Bogie("Sleeper", 72));
-        bogies.add(new Bogie("AC Chair", 56));
-        bogies.add(new Bogie("First Class", 24));
+        // Regex patterns
+        Pattern trainPattern = Pattern.compile("TRN-\\d{4}");
+        Pattern cargoPattern = Pattern.compile("PET-[A-Z]{2}");
 
-        // CALCULATE total capacity
-        int totalCapacity = bogies.stream()
-                .map(b -> b.capacity)
-                .reduce(0, Integer::sum);
+        // Matcher
+        Matcher trainMatcher = trainPattern.matcher(trainId);
+        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
 
-        // DISPLAY result
-        System.out.println("Total Seating Capacity: " + totalCapacity);
-    }
-}
+        // Validation
+        if (trainMatcher.matches()) {
+            System.out.println("Valid Train ID: " + trainId);
+        } else {
+            System.out.println("Invalid Train ID: " + trainId);
+        }
 
-/**
- * CLASS - Bogie
- */
-class Bogie {
-
-    String name;
-    int capacity;
-
-    public Bogie(String name, int capacity) {
-        this.name = name;
-        this.capacity = capacity;
+        if (cargoMatcher.matches()) {
+            System.out.println("Valid Cargo Code: " + cargoCode);
+        } else {
+            System.out.println("Invalid Cargo Code: " + cargoCode);
+        }
     }
 }
